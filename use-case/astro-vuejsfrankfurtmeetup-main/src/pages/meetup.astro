@@ -1,0 +1,64 @@
+---
+import MeetupEvent from '../components/meetup-event.astro';
+import Weather from '../components/weather.astro';
+import MeetupEventVue from '../components/meetup-event.vue';
+import Counter from '../components/Counter.vue'
+import Sfc from '../components/Sfc.vue'
+import { Markdown } from 'astro/components';
+
+import events from '../data/events.json';
+let headline = "Astro@VueJS Meetup Frankfurt";
+---
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{headline}</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.7.4/mvp.css" />
+    <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css"  />
+</head>
+<body>
+    <header>
+        <h1>{headline}</h1>
+    </header>
+    <main>
+        <Sfc client:visible> 測試支援 Vue3 Single File Component  </Sfc>    
+        
+        <Counter client:visible>
+            <h1>Hello Vue!</h1>
+        </Counter>    
+
+        {events.map((event) => <MeetupEvent title={event.name} time={`${event.local_date} ${event.local_time}`} description={event.description} />)}
+        <Markdown>
+            # Welcome to our revival meetup
+
+            Our first presentation will held by Jan[^1]
+
+            ## Using Astro.build
+
+            Starting: 17.06.2021 20:00
+
+            - [x] setup meetup event
+            - [x] create tweet
+            - [x] invited people
+            - [x] prepared presentation
+            - [ ] held prsentation
+            - [ ] received feedback
+            - [ ] eating pizza together (not happening this time :-( )
+
+            <MeetupEventVue client:visible title={events[0].name} time={`${events[0].local_date} ${events[0].local_time}`} description={events[0].description} />
+
+            ````java
+            class MyJavaProgram {
+                public static void main(String args[]) {
+                    System.out.println("Hello World");
+                }
+            }
+            ````
+        </Markdown>
+        
+        <Weather />
+    </main>
+</body>
+</html>

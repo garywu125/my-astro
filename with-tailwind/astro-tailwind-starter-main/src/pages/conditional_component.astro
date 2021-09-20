@@ -1,0 +1,46 @@
+---
+import { Markdown } from 'astro/components';
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ThingOne from '../components/ThingOne.astro'
+import ThingTwo from '../components/ThingTwo.astro'
+const maybe=true
+---
+<BaseLayout title="conditional component" description="this is simple home page description">
+    <h2  class="text-center text-4xl text-green-400">conditonal component </h2> 
+    <p class="text-center text-2xl ml-5 text-blue-400 mb-5"> show which component depend on the condition is met or not</p>  
+    <div>
+        {maybe?<ThingOne />:<ThingTwo /> }
+    </div>    
+
+    <p class="text-4xl mt-5 mb-5">code block</p>
+    <div class="container bg-gray-200 " >    
+        <Markdown >      
+            ## nested static/dynamic Markdown example
+            
+            Here we have some __Markdown__ code. We can also dynamically render content from remote places.              
+
+            ```astro
+            ---
+            import { Markdown } from 'astro/components';
+            import BaseLayout from '../layouts/BaseLayout.astro'
+            import ThingOne from '../components/ThingOne.astro'
+            import ThingTwo from '../components/ThingTwo.astro'
+            const maybe=true
+            ---
+            <h2>conditional component</h2>    
+            <div>
+                {maybe?<ThingOne />:<ThingTwo /> }
+            </div>    
+            ```               
+        </Markdown>
+        <Markdown>
+         ```json
+        {
+        "firstName": "John",
+        "lastName": "Smith",
+        "age": 25
+        }
+        ```
+        </Markdown>
+    </div>
+</BaseLayout>    

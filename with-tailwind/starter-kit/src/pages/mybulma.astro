@@ -1,0 +1,28 @@
+---
+import { Markdown } from 'astro/components';
+import XPage from '../layouts/xpage.astro';
+const localData = Astro.fetchContent('../content/*.md');
+const title = 'bulma';
+const description = 'bulma + tailwind  demo';
+import Bulma01 from '../components/BulmaMix.astro';
+import Bulma02 from '../components/BulmaOnly.astro';
+---
+  <!-- content notification -->
+  
+<XPage content={{ title, description }}>  
+    
+    
+    <div class="bg-green-300 border-green-600 border-b p-4 m-4 rounded">
+      Hello World ### in page
+    </div>   
+      <Bulma01 />
+      <Bulma02 />
+      <Markdown  content={localData[0].astro.source} />                   
+      <Markdown content={localData[1].astro.source} />     
+      <Markdown content={localData[2].astro.source} />     
+      
+   <!-- 務必在下面增加一個 whatever element  -->
+    <span></span>    
+    
+    
+</XPage>

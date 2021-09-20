@@ -1,0 +1,36 @@
+---
+  // These .astro files can also take in props
+export interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+<header class="container">
+    {(title != null && description != null) ? (
+      <>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </>
+    ) : (
+      <>
+       <h1>Hello, world!</h1>
+       <p>This is my page content. It will be nested inside a layout.</p>
+      </>
+    )}
+
+</header>
+
+<style lang="scss">
+  h1 {
+    font-family: var(--font-mono);
+    font-size: 2em;
+    color: var(--color-highlight-one);
+    margin-bottom: 1rem;
+  }
+
+  header{
+    border-bottom: 1px solid var(--color-light);
+    
+  }
+</style>

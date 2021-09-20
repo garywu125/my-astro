@@ -1,0 +1,23 @@
+---
+import { Markdown } from 'astro/components';
+import Navigation from '../components/layout/Navigation.astro'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
+import MainHead from '../components/MainHead.astro'
+
+const { title, description, head } = Astro.props;
+---
+<html class="theme__dark" lang="en">
+  <head>
+    {head}
+    <MainHead title={title} description={description} />
+  </head>
+  <body>
+    <Navigation />
+    <Header title={title} description={description} />
+    <main class="container">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

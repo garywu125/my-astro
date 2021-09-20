@@ -1,0 +1,1 @@
+alert('src file : Executing JavaScript 2')

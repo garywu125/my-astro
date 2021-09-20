@@ -1,0 +1,41 @@
+---  
+// import class from [javascript]    
+import {Snake,Horse} from '../types/animals/index.js'
+// import const from [Javasscript]
+import {items,animals,brands} from '../consts/jsCollections/index.js' ; 
+const sam = new Snake("Sammy the Python");
+const tom = new Horse("Tommy the Palomino");    
+---
+<h2>spread script file  in different directory for frontmatter import in Atro differnt component</h2>
+
+<ul>
+  <li> Astro component logic (Page component 自用 scripts): kept  script file  near page component </li>
+  <li>Astro JS utility (Astro 公用scripts)</li>
+  <ul>
+    <li>kept [type] in types directory ( hold js type (classes ...)</li>
+    <li>kept constant in [consts] directory (host js values/collection)</li>
+  </ul>
+</ul>  
+<hr>
+<p>same move:{sam.move()}</p>
+<p>tom.move:{tom.move(30)}</p>    
+<!--!!!! multiple element content : 只能放在 page componnent 目錄 ,不能放在Components 目錄內 -->
+<br>
+<ul>
+{
+  items.reverse().map(item=><li>{item}</li>)  
+}
+</ul>    
+
+<br>
+<ul>
+{
+  brands.reverse().map(item=><li>{item}</li>)  
+}
+</ul>    
+
+<ul>
+{
+  animals.reverse().map(item=><li>{item}</li>)  
+}
+</ul>    

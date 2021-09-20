@@ -1,0 +1,21 @@
+---
+const { content } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{content.title}</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.7.4/mvp.css" />
+    <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css"  />
+</head>
+<body>
+    <header>
+        <h1>{content.title}</h1>
+    </header>
+    <main>
+        <slot></slot>
+    </main>
+</body>
+</html>

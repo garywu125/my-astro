@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+let foo="foo in frontmatter (src)"
+---
+<BaseLayout title="script tag src" description="this is simple contacts page description">
+    <script src="/scripts/sky.js" type="module" defer>    
+    </script>  
+     <h1> JavaScript Tutorials</h1>          
+     <p>{foo}</p>   
+    <p>This page contains multiple script tags.</p>
+    <div  id="myxx"  
+         data-foo={foo}       
+         data-columns="3"
+         data-index-number="12314"
+        data-parent="cars"
+       >             
+        foo in div
+    </div>
+    
+    <script defer>
+           const xfoo = document.querySelector('#myxx');  
+           xfoo.innerText = xfoo.dataset.foo     
+           console.log("foo:",xfoo.dataset.foo)
+           console.log("parent:",xfoo.dataset.parent)
+           console.log("columns:",xfoo.dataset.columns)
+    </script>  
+       
+     <script src="/scripts/ord01.js" defer>     
+    </script>     
+    <script src="/scripts/ord02.js" defer>     
+    </script>      
+   
+   
+</BaseLayout>

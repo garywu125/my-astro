@@ -1,0 +1,12 @@
+{
+    "don": {
+      "name": "Don Quixote達",
+      "image": "/authors/don.jpg",
+      "article":["book1","novel1","poem01"]
+    },
+    "sancho": {
+      "name": "Sancho Panzaj人",
+      "image": "/authors/sancho.jpg",
+      "article":["book2","novel2","poem02"]
+    }
+  }

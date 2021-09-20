@@ -1,0 +1,30 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  permalink: string;
+}
+
+const { title, description, permalink } = Astro.props
+---
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} | Mykal.Codes</title>
+<meta name="description" content={description}>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/style/global.css">
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://swallow.tinybox.dev/script.js" data-site="NNLFOQGJ" defer></script>
+<!-- / Fathom -->
+
+<!-- Lozad.js - lazy loading and progressive enhancement -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = lozad('.lazy', {}); // lazy loads elements with default selector as '.lozad'
+  observer.observe(); 
+})
+</script>
+<!-- / Lozad.js -->

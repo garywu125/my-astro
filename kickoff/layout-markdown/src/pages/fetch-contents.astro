@@ -1,0 +1,11 @@
+---
+import { Markdown } from 'astro/components';
+const localData = Astro.fetchContent('../content/*.md');
+---
+  <p>skladkjfklasjdflksda</p>
+<div class="module">
+  <Markdown content={localData[0].astro.source} />    
+  <hr style='background-color:red; height:3px; border:none;'>
+  <Markdown content={localData[1].astro.source} />
+
+</div>

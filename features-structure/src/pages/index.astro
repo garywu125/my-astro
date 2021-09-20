@@ -1,0 +1,96 @@
+---
+// Component Imports
+// import Button from '../components/lib/Button.astro';
+import { Button ,Menu,Badge} from '../components/base/index.js';
+
+const items = ["Dog", "Cat", "Platipus"];
+
+const translate={ EN:{KY:"HAHA"},ZH:{KY:"哈哈"},FR:{KY:"france"}}
+
+import   Translation  from "../components/translation/Translation.astro"
+// import { en, es, fr } from "../locales/index.js";
+// const locales = { en, es, fr };
+
+
+
+const ShouldSkip = () => <>
+                           <p> haha </p> 
+                           <p> haha </p> 
+                           <p> content </p> 
+                         </>  
+// 新版本Compiler才可以 => Supports imports from npm (using Skypack), as well as remote URLs (cdn.esm.sh, etc.)                      
+// import confetti from 'https://cdn.skypack.dev/canvas-confetti';  
+
+
+// passing Markdown content through props
+import { Markdown } from 'astro/components';
+const content = 
+`
+# Foo
+## bar **bold**
+`;
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Astro + TailwindCSS</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/global.css"> -->
+    <!-- <link rel="stylesheet" href={Astro.resolve('../styles/global.css')} /> -->
+    <!-- <link 
+    rel="stylesheet" 
+    href={Astro.resolve('../styles/global.css')}     
+  /> -->
+  <link rel="stylesheet"   href="{Astro.resolve('../styles/index.css')}">
+  </head>
+
+  <body>
+  <!-- build a layout -->
+    <Button>I’m a Tailwind Button!</Button>
+    <Menu />
+    <Badge />
+    <ul>
+      {items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+   <ul>
+      {Object.entries(translate).map((item) => (
+        <li>{translate[item[0]]["KY"]}</li>
+      ))}
+    </ul>
+
+    <Translation lang="es" />
+    
+    <!-- <ul>     
+      {Object.entries(locales).map((item) => (
+        <li>{locales[item[0]]["Astro with i18next example"]}</li>
+      ))}
+    </ul> -->
+    <ShouldSkip />
+    <!--新版本compiler才可以  -->
+    <!-- {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      })
+    } -->
+    
+    <Markdown content={content} />
+
+     <p>end</p>
+     
+     <script type="module">
+      import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+     </script>
+  </body>
+</html>

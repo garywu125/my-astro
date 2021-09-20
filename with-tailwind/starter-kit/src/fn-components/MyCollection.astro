@@ -1,0 +1,33 @@
+---
+// data import (shared data)
+import {items,animals,brands} from '../data/mycollection.js'  
+// function-based component
+const ListAnimals=()=><ul>
+                        {animals.map((item) => (
+                          <>
+                            <li>Red {item}</li>
+                            <li>Blue {item}</li>
+                            <li>Green {item}</li>
+                          </>
+                        ))}
+                      </ul>
+const ListBrands=()=><div>{brands.map((item,idx) => (                                                         
+                              <>
+                                <span>品牌{idx}:</span>
+                                <span>{item}</span>                            
+                              </>  
+                            ))}
+                       </div> 
+                       
+const ListItems=()=><ul>
+                    <>
+                      <li>item 1</li>
+                      <li>item 2</li>
+                      <li>item 3</li>
+                    </> 
+                  </ul>                        
+---
+
+<ListAnimals />
+<ListBrands />
+<ListItems />

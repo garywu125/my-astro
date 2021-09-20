@@ -1,0 +1,14 @@
+---
+const data = await fetch('https://www.metaweather.com/api/location/44418/').then((res) => res.json());
+---
+
+<div>
+{data["consolidated_weather"].slice(0, 3).map((weather) => (
+  <article>
+    <h1>{weather.weather_state_name}</h1>
+    <p>{weather.min_temp}</p>
+    <p>{weather.the_temp}</p>
+    <p>{weather.max_temp}</p>
+  </article>
+))}
+</div>

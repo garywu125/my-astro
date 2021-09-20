@@ -1,0 +1,56 @@
+---
+//
+//  [error]:建立一個目錄:將page component 與其相關的 javascript 放在一起
+//   .js => .js.js
+//
+//  astro v0.20  : stop bundling, building, and processing public files
+//  move javascript file to public 目錄下
+// 
+//
+const greeting1="hi"
+---
+
+<button onClick="sayHi('你好')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Hi
+</button>
+<br>
+<button onClick="sayHello('world')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Hello 
+</button>
+
+
+
+<!--  encourge to write [page script] in astro page component <script block> -->
+ <!-- <script type="module">
+   const sayHello=(greeting)=>alert(`hello ${greeting}`);
+   const sayHi=(word)=>alert(`hi ${word}`);
+ </script> -->
+
+<!--  encourge to write [utility script] in public directory /public/utility/....     -->
+<!-- <script src="/utility/greeting/hi.js" defer></script> -->
+
+
+
+
+
+
+
+<!-- ❓❓❓ import utility from third party like npm (module script vs none module script) ❓❓❓-->
+
+
+
+<!-- ❓❓❓ 如何取 javascript in src 目錄下 : not found ❓❓❓ -->
+<!--  dev/build mode failure : function not found !!!!! -->
+<!-- <script src={Astro.resolve('../utility/greeting/hi.js')} hoist></script>
+<script src={Astro.resolve('../utility/greeting/hello.js')} hoist></script> -->
+
+<!-- access javascript file in public folder -->
+<script src="/utility/greeting/hi.js" defer></script>
+<script src="/utility/greeting/hello.js" defer></script>
+
+
+<!-- 
+ <script>
+   const sayHi=()=>console.log("hi1");
+   const sayHi2=()=>alert("hi2");
+ </script> -->

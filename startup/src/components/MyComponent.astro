@@ -1,0 +1,15 @@
+<!-- fence and front matter is optional -->
+<div id="my-component">
+  <header>
+    <slot name="header" /> <!-- children with the `slot="header"` attribute will go here -->
+  </header>
+
+  <main>
+    <!-- children without a `slot` (or with the `slot="default"`) attribute will go here -->
+    <slot />
+  </main>
+
+  <footer>
+    <slot name="footer" /> <!-- children with the `slot="footer"` attribute will go here -->
+  </footer>
+</div>

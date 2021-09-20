@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Markdown } from 'astro/components';
+let greeting = "Hello"
+let name = "Elsa"
+import RecentTweet from '../components/RecentTweet.jsx';
+---
+<BaseLayout title = "HomePage">
+  <main>
+  <h1><center>{greeting}, Astro {name}!</center></h1>
+
+  <img style="margin: 0 auto;" src="/images/astro-logo.jpg" alt="astro hand-drawn logo" width="100px">
+
+</main>
+</BaseLayout>
+

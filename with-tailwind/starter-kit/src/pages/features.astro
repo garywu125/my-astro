@@ -1,0 +1,110 @@
+---
+// data import
+import { Markdown } from 'astro/components';
+import {items,animals,brands} from '../data/mycollection.js'  
+import MyCollection from "../fn-components/MyCollection.astro"
+import SubHero from "../components/SubHero.astro"
+const name="gary wu"    
+const Xh1=()=><h1>item component</h1>
+                     
+// ??? 取用遠端模組 ??? error !!!!!
+// import ms from 'https://cdn.skypack.dev/ms';
+// const xtime=ms(2 * 60000)
+// console.log(xtime)
+
+// build in component
+import { Prism } from 'astro/components';
+import Calendar from '../components/Calendar.jsx'
+---
+<!-- mutiple name  content slot -->
+<SubHero>
+   <p slot="icon">Hello</p>
+   <p >Some regular content</p>
+</SubHero>
+<!-- rendering .astro code in Markdown -->
+<h3>here is the code for this page ,rendering the widget</h3>
+<div style="background-color:lightgray">
+<Markdown >          
+          ```astro
+          ---
+          import MainLayout from '../components/MainLayout.astro';
+          import BaseHead from '../components/BaseHead.astro';
+
+          const { content } = Astro.props
+          ---
+          <!doctype html>
+          <html lang="en">
+              <head>
+                  <BaseHead
+                      title={content.title ? `Astro - Note | ${content.title}` : 'Astro - Note'}
+                      description={content.description}
+                  />
+              </head>
+              <body class="font-sans antialiased"> 
+                  <!--採用主容器外觀與內容布局 (boady端 )-->   
+                  <MainLayout>
+                      <!-- page: frontmatter -->
+
+                      <h1 class="text-center text-gray-700">{content.title}</h1>
+                      <h5 class="text-center text-gray-500">{content.description}</h5>
+
+                      <!-- post: separator -->
+                      <hr />
+
+                      <!-- post: content -->
+                      <section class="text-center">
+                          <slot />
+                      </section>
+                  </MainLayout>
+              </body>
+          </html>
+          ```
+</Markdown>
+</div>
+
+
+
+<h1>{name}</h1>    
+<Xh1 />
+
+<MyCollection />
+
+<ul>
+  {animals.map((item) => (
+    <>
+      <li>Red {item}</li>
+      <li>Blue {item}</li>
+      <li>Green {item}</li>
+    </>
+  ))}
+</ul>
+
+<br>
+
+<ul>
+{
+  items.reverse().map(item=><li>{item}</li>)  
+}
+</ul>    
+
+<br>
+
+<div>
+  {brands.map((item,idx) => <>   
+                            <p><span>品牌{idx}:</span></p>                                                                                  
+                            <p style="padding-left:20px">{item}</p>                                                                                   
+                          </>                         
+                        )}
+</div>
+
+<Calendar client:load></Calendar>
+
+<style>
+   h1 {
+       color:red;
+   } 
+   ul>li { color:green }
+</style>
+
+
+ 

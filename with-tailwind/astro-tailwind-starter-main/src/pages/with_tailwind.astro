@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TwPeople from '../components/TwPeople.astro'
+import Button from '../components/Button.jsx';
+---
+
+<BaseLayout title="Home Page" description="this is simple home page description">
+    <p class="text-green-400"> markdown</p>
+    <p class="capitalize font-bold italic">The quick brown fox ...</p>
+    <TwPeople />  
+    <section class="container mx-auto">
+        <!-- <table class="table-auto"> -->
+        <table class="table-fixed border-collapse border border-green-800">
+            <thead>
+                <tr>
+                <th class="w-1/2 border border-green-600 ">Title</th>
+                <th class="w-1/4 border border-green-600">Author</th>
+                <th class="w-1/4 border border-green-600">Views</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="w-1/2 border border-green-600">Intro to CSS</td>
+                <td class="w-1/2 border border-green-600">Adam</td>
+                <td class="w-1/2 border border-green-600">858</td>
+                </tr>
+                <tr>
+                <td class="w-1/2 border border-green-600">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+                <td class="w-1/2 border border-green-600">Adam</td>
+                <td class="w-1/2 border border-green-600">112</td>
+                </tr>
+                <tr>
+                <td class="w-1/2 border border-green-600">Intro to JavaScript</td>
+                <td class="w-1/2 border border-green-600">Chris</td>
+                <td class="w-1/2 border border-green-600">1,280</td>
+                </tr>
+                 <tr>
+                <td class="w-1/2 border border-green-600">Tailwind learning</td>
+                <td class="w-1/2 border border-green-600">Adam</td>
+                <td class="w-1/2 border border-green-600">1,280</td>
+                </tr>
+            </tbody>            
+        </table>  
+        <div class="flex flex-col">
+                <div class="p-2 bg-yellow-200">block 1</div>
+                <div class="p-2 bg-green-200">block 2</div>
+                <div class="p-2 bg-blue-200">block 3</div>
+                <div class="p-2 bg-red-200">block 4</div>
+        </div>
+        <div class="flex flex-col ">
+            <div class="p-2 bg-yellow-200">block 1</div>
+            <div class="p-2 bg-green-200">block 2</div>
+            <div class="p-2 bg-blue-200">block 3</div>
+            <div class="p-2 bg-red-200">block 4</div>
+        </div>
+        <p class="text-green-900">hydrate jsx components With Tailwind  </p>
+        <!-- lazy load partial hydration -->
+        <Button client:visible>Hello, Astro!(hydration)</Button>
+        <!-- HTML only -->
+        <Button >Hello, Astro!(without hydration)</Button>
+    </section>    
+   
+</BaseLayout>
+
+
+<script type="module" src="https://unpkg.com/petite-vue" defer init></script>
+
+ <!-- anywhere on the page ??? error cause by astro jsx expression conflict , same as alpine.js/petite-->
+    <!-- <div v-scope="{ count: 0 }">
+    {{ count }}
+    <button @click="count++">inc</button>
+    </div>       -->

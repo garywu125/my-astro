@@ -1,0 +1,118 @@
+---
+// Component Imports
+import Tour from '../components/Tour.astro';
+import MyComponent from '../components/MyComponent.astro'
+import { Markdown } from 'astro/components';
+
+// You can import components from any supported Framework here!
+
+// remote markdown
+const content = await fetch('https://raw.githubusercontent.com/snowpackjs/snowpack/main/README.md').then(res => res.text());
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'My Astro Site';
+let name = 'Cassidy'
+let food = ['apple', 'banana', 'cake']
+const expressions = 'Lorem ipsum';
+
+// Full Astro Component Syntax:
+// https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/astro-components.md
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="/style/home.css">
+
+    <style>
+    /* page css */
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            max-width: min(100%, 68ch);
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <header>
+            <div>
+                <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo">
+                <h1>Welcome to <a href="https://astro.build/">Astro</a></h1>
+            </div>
+        </header> 
+            <!-- ??? why rendering 3 times  -->
+        <MyComponent >            
+            <p slot="header">header ????</p>            
+            <p>Lorem ipsum ...</p>            
+            <p slot="footer">footer @@@ </p>  
+        </MyComponent>  
+
+        <!-- <Tour client:load client:media="(max-width: 768px)" />         -->
+        <!-- <Tour client:idle />         -->
+        <!-- remote markdown : dynamic content-->
+        <Markdown content={content} />
+
+         <Markdown>
+            <!-- use plain HTML or custom component -->
+            <!-- <h1>haha</h1> -->
+             # Hello world!                           
+            <!-- <Tour:visible />     
+                               -->
+            **Everything** supported in a `.md` file is also supported here!
+
+            There is _zero_ runtime overhead.
+
+            In addition, Astro supports:
+            - Astro {expressions}
+            - Automatic indentation normalization
+            - Automatic escaping of expressions inside code blocks       
+            - Rich component support like any `.astro` file!
+            - Recursive Markdown support (Component children are also processed as Markdown)
+
+            
+            Create unordered combination and nested ordered lists by indenting lines with four spaces
+            1. Types of bears
+                - Grizzly bear
+                - Polar bear
+                    - Vulnerable species (population decreasing)
+                - Teddy bear
+                    - Theodore Roosevelt
+            2. Bears aren't the coolest...
+            3. Sharks are cooler
+                1. Tiger shark
+                2. Bull shark
+                3. Mako shark
+                4. Hammerhead shark
+                5. Great white
+                    - Jaws                                                                                  
+        </Markdown>
+
+
+        {name} was here
+        <ul>
+            {food.map((item) => (
+                <li>{item}</li>
+            ))}
+        </ul>
+
+        
+        <!--
+           - You can also use imported framework components directly in your markup!
+           -
+           - Note: by default, these components are NOT interactive on the client.
+           - The `:visible` directive tells Astro to make it interactive.
+           -
+           - See https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/component-hydration.md 
+           -->
+         <Tour client:visible />   
+    </main>
+</body>
+</html>

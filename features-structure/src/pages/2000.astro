@@ -1,0 +1,45 @@
+---
+import { OneSlot,MultipleSlot} from '../components/2000/index.js';
+// import {Counter as ReactCounter }  from '../components/1000/1000_react/index.js';
+// import {VueCounter} from '../components/1000/1000_vue/index.js';
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Astro + TailwindCSS</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/global.css"> -->
+    <!-- <link rel="stylesheet" href={Astro.resolve('../styles/global.css')} /> -->
+    <!-- <link 
+    rel="stylesheet" 
+    href={Astro.resolve('../styles/global.css')}     
+  /> -->
+  <link rel="stylesheet"   href="{Astro.resolve('../styles/index.css')}">
+  </head>
+
+  <body>
+     <OneSlot>
+     <h1>hello world -- slot tag</h1>
+     </OneSlot>          
+     <hr>
+     <MultipleSlot >    
+        <h1 slot="header">header of component</h1>
+        <p slot="default">Lorem ipsum ...</p>
+        <p slot="footer"> footer of component</p>
+     </MultipleSlot>
+     <hr>
+     <MultipleSlot head=true>    
+        <!-- <h1 slot="header">header of component</h1> -->
+        <p slot="default">Lorem ipsum ...</p>
+        <p slot="footer"> footer of component</p>
+     </MultipleSlot>
+     <hr>
+     <MultipleSlot>    
+        <!-- <h1 slot="header">header of component</h1> -->
+        <!-- <p slot="default">Lorem ipsum ...</p> -->
+        <p slot="footer"> footer of component</p>
+     </MultipleSlot>
+  </body>
+</html>

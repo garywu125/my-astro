@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+import Intro from '../components/Intro.astro';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <BaseHead title="Astro - Note" description="Ship fast, deliver quick with less or no Javascript" />
+</head>
+<body class="font-sans antialiased">
+    <BaseLayout>
+        <br class="my-4"/>
+        <div class="bg-green-300 border-green-600 border-b p-4 m-4 rounded">
+      Hello World ### in page
+</div>   
+
+<div class="grid grid-flow-col grid-rows-2 grid-cols-3 gap-4 bg-pink-100">
+  <div>
+    1
+  </div>
+  <div class="col-start-3">
+    2
+  </div>
+  <div>
+    3
+  </div>
+  <div>
+    4
+  </div>
+  <div class="row-start-1 col-start-2 col-span-2">
+    5
+  </div>
+</div>
+    </BaseLayout>
+</body>
+</html>
+
+

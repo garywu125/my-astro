@@ -1,0 +1,10 @@
+---
+import Counter from './Counter.jsx'
+const {someProps}=Astro.props
+// const someProps = {
+//   count: 0,
+// }
+---
+ <Counter {...someProps} client:visible>
+        <h1>Hello React!</h1>
+</Counter>

@@ -1,0 +1,17 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  permalink?: string;
+}
+
+const { title, description, permalink } = Astro.props
+---
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} | Gary Wu</title>
+<meta name="description" content={description}>
+<!-- a permalink is the full link to an individual post or page on your blog  for making SEO-friendly  -->
+<link rel="bookmark" href={permalink} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/style/global.css">

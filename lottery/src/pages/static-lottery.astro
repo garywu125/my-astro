@@ -1,0 +1,52 @@
+---
+import Counter from '../components/Counter.tsx';
+import Tour from '../components/Tour.astro';
+import MyComponent from '../components/MyComponent.astro';
+import Footer from '../components/Footer.astro';
+import Lottery from '../components/Lottery.astro';
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <style>
+      :global(:root) {
+        font-family: system-ui;
+        padding: 2em 0;
+      }
+      :global(.counter) {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        place-items: center;
+        font-size: 2em;
+        margin-top: 2em;
+      }
+      :global(.children) {
+        display: grid;
+        place-items: center;
+        margin-bottom: 2em;
+      }
+    </style>
+  </head>
+  <body>    
+    <main>      
+      <p><span style="color:blueviolet;margin-right: 50px;font-weight:bold;font-size:24px">Static Astro Component</span></p>   
+      <!-- pass data to component via component attribute 傳資料給Component-->
+      <div style="color:green">             
+        <!-- passing propos to astro component (static)-->
+        <Lottery through=38 selected=4 seed=8 /> 
+      </div>
+      <!-- pass content to named Content Slot of component-->
+      <MyComponent>
+        <Footer slot="footer" />
+        <h1 slot="header">Hello world!</h1>
+        <!-- <p >Lorem ipsum ...</p>         -->
+        <p slot="default">Lorem ipsum ...</p>        
+      </MyComponent>
+    </main>    
+  </body>
+</html>

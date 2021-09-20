@@ -1,0 +1,94 @@
+---
+import { Markdown } from 'astro/components';
+import BaseLayout from '../layouts/BaseLayout.astro'
+ const content=[
+        {
+          name:"parent 1",
+         children:[
+             {name:"child 11",age:11},
+             {name:"child 12-one",age:12},
+             {name:"child 13",age:13}
+             ]
+         },
+        {
+          name:"parent 2",
+         children:[
+             {name:"child 21",age:21},
+             {name:"child 22",age:22},
+             {name:"child 23",age:23}
+             ]
+        }]
+---  
+<BaseLayout title="nested array map Page" description="this is simple home page description">
+<h2  class="text-center text-4xl text-green-400">nested array map </h2> 
+<p class="text-center text-2xl ml-5 text-blue-400 mb-5"> return single value using fragement</p>   
+<div>  
+    {content.map((parent) => (
+      <>        
+        <div>Lsit of children of <span class="uppercase">{parent.name}</span>
+          {parent.children.map((child) => (
+            <>
+              <ul>
+                <li>
+                  <span class="ml-10">name:{child.name}</span>
+                  <span class="ml-10">age:{child.age}</span>
+                </li>
+              </ul>
+            </>
+           ))}
+        </div>
+      </>
+    ))}   
+</div>
+
+<p class="text-4xl mt-5 mb-5">code block</p>
+<div class="container bg-gray-200 " >    
+    <Markdown >            
+        ```astro
+        ---
+                import { Markdown } from 'astro/components';
+            const content=[
+                    {
+                      name:"parent 1",
+                    children:[
+                        {name:"child 11",age:11},
+                        {name:"child 12-one",age:12},
+                        {name:"child 13",age:13}
+                        ]
+                    },
+                    {
+                      name:"parent 2",
+                    children:[
+                        {name:"child 21",age:21},
+                        {name:"child 22",age:22},
+                        {name:"child 23",age:23}
+                        ]
+                    }]
+        ---       
+
+            <h2>nested array map : return single value using fragement</h2>    
+            <div>
+              
+                {content.map((parent) => (
+                  <>        
+                    <div>Lsit of children of <span class="uppercase">{parent.name}</span>
+                      {parent.children.map((child) => (
+                        <>
+                          <ul>
+                            <li>
+                              <span class="ml-10">name:{child.name}</span>
+                              <span class="ml-10">age:{child.age}</span>
+                            </li>
+                          </ul>
+                        </>
+                      ))}
+                    </div>
+                  </>
+                ))}
+              
+            </div>
+        ```    
+                More paragraphs and so forth...
+    </Markdown>
+</div>
+</BaseLayout>  

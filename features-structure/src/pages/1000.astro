@@ -1,0 +1,54 @@
+---
+import { B1_1000,B2_1000} from '../components/1000/index.js';
+// import { B1_1000,B2_1000} from '@components/1000/index.js';
+// import {Counter as ReactCounter }  from '../components/1000/1000_react/index.js';
+// import {VueCounter} from '../components/1000/1000_vue/index.js';
+// const items=[]  // empty array 
+const items=["item1","item2"]
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Astro + TailwindCSS</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/global.css"> -->
+    <!-- <link rel="stylesheet" href={Astro.resolve('../styles/global.css')} /> -->
+    <!-- <link 
+    rel="stylesheet" 
+    href={Astro.resolve('../styles/global.css')}     
+  /> -->
+  <link rel="stylesheet"   href="{Astro.resolve('../styles/index.css')}">
+  </head>
+
+  <body>
+  <!-- build a layout -->    
+    <B1_1000 />      
+    <div class="container flex  items-center px-5 py-16 mx-auto  lg:px-28">      
+      <B2_1000 />        
+    </div>
+    <hr>
+
+    <p>empty array with astro - 作法一⭐⭐</p>
+    {items.length ? (
+    <ul>
+      {items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  ) : undefined}
+    <p>empty array with astro - 作法二 ⭐⭐⭐/p>
+  {(items.length > 0) && (
+  <ul>
+    {items.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+)}
+
+
+
+    <!-- <script src={Astro.resolve("./1000/myAlert.js")} /> -->
+  </body>
+</html>

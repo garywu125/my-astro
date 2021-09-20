@@ -1,0 +1,45 @@
+---
+import { Markdown } from 'astro/components';
+
+export interface Props {
+  title: string;
+  body: string
+}
+
+const {title, body } = Astro.props
+---
+<header>
+    <div>
+        <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo">
+        <h1>{title?.charAt(0).toUpperCase() + title?.slice(1)}</h1>
+    </div>
+</header>
+<article>
+    <section>
+    </section>
+	{body}
+     <section>
+    </section>
+</article>
+
+<style>
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+		max-width: 68ch;
+    }
+    article {
+        padding-top: 2em;
+        line-height: 1.5;
+		max-width: 68ch;
+    }
+    section {
+        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        max-width: 68ch;
+		word-wap: break-word;
+    }
+</style>

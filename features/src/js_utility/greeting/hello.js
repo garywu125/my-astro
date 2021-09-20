@@ -1,0 +1,1 @@
+export const sayHello=(greeting)=>alert(`hello ${greeting}`);

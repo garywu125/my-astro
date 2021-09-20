@@ -1,0 +1,98 @@
+---
+// Layout Import
+import MainLayout from '../layouts/MainLayout.astro';
+// load npm package
+import Swal from 'sweetalert2'
+---
+
+  <!-- add optionl external style/CDN javascript file in head  -->
+  <!--  use sweetAlert ,1. npm install sweetalert2 2.grab from jsdelivr CDN-->
+<MainLayout
+ title="Bulma Starter"
+ description="Astro + bulma..."
+ head={  
+  <>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">          
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+  </>  
+}
+>
+
+<section class="section">
+    <div class="container">
+      <h1 class="title">
+        Hello World
+      </h1>
+      <p class="subtitle">
+        My first website with <strong>Bulma</strong>!
+      </p>
+     
+      <a class="button">
+        修飾子無し
+      </a>
+      <a class="button is-primary">
+        修飾子有り is-primary
+      </a>
+      <a class="button is-link">
+        修飾子有り is-link
+      </a>
+      <a class="button is-info">
+        修飾子有り is-info
+      </a>
+      <a class="button is-success">
+        修飾子有り is-success
+      </a>
+      <a class="button is-warning">
+        修飾子有り is-warning
+      </a>
+      <a class="button is-danger">
+        修飾子有り is-danger
+      </a>
+ 
+
+      <div class="columns has-is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+        <div class="column">
+          Column
+        </div>
+        <div class="column">
+          Column
+        </div>
+        <div class="column ">
+          Column
+        </div>
+        <div class="column">
+          Column
+        </div>
+        <div class="column">
+          Column
+        </div>
+        <div class="column">
+          Column
+        </div>
+      </div>
+      <button onclick="myAlert()" >
+       Alert
+      </button>
+    </div>
+    
+    <script >
+     
+      const myAlert=()=>{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+      }
+    </script>
+  </section>
+
+
+</MainLayout>
+
+
+
+
+
+

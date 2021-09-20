@@ -1,0 +1,1 @@
+const myfunc=()=>alert('按我-script_1000 => index.js!!!')

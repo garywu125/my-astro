@@ -1,0 +1,27 @@
+---
+import { en, es, fr } from "../../locales";
+import Debug from 'astro/debug';
+const locales = { en, es, fr };
+const { lang = 'en'} = Astro.props;
+
+--- 
+<!-- <Debug {locales} /> -->
+<!-- map =>(expression) -->
+<!-- map =>{code block } -->
+<ul>     
+      <!-- {Object.entries(locales).map((item) => (
+        <li>
+        {item[0]==lang?locales[item[0]]["Astro with i18next example"]:undefined}
+        </li>    
+      )
+      )} -->
+       <!-- <Debug {locales} /> -->
+       {Object.entries(locales).map((item) => {         
+         if (item[0]==lang) {        
+          return <li>{locales[item[0]]["Astro with i18next example"]}</li>
+         } else {
+          return undefined
+         }         
+       }
+      )}
+</ul>

@@ -1,0 +1,40 @@
+---  
+/**
+ *  Layouts are a special type of Component, layouts component will often contain the full page <html>, <head> and <body> (often referred to as the page shell). 
+ * 
+ */
+
+// src/layouts/BaseLayout.astro
+// const {title} = Astro.props;
+// 新增
+import MainHead from '../components/MainHead.astro'
+import Navigation from '../components/Navigation.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+// site information 
+import site from "../data/site.json";
+const {title, description} = site;  
+--- 
+
+<html lang="en">
+  <head>
+  <!-- SEO info -->
+    <MainHead title={title} description={description} />    
+  </head>
+  <body>
+    <!-- Adds a navigation bar to every page. -->
+    <Navigation />  
+
+    <Header title="Gary WU" description={`
+      I'm a Systems Analyst at <a href="https://ufv.ca">UFV</a>, and the only guy at <a href="https://tinybox.dev">Tinybox</a> <br /> Welcome to my website 👋🏻!
+    `} />
+
+    <!-- slot: your page content will be injected here. -->     
+    <main>
+      <slot />  
+    </main>
+    
+    <Footer />
+    
+  </body>
+</html>

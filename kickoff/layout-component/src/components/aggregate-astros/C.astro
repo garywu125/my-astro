@@ -1,0 +1,45 @@
+---
+  /**
+   *  you could add a <script> tag to your Astro component HTML template and send JavaScript to the browser that way
+   * 
+   */
+    import Tour from '../Tour.astro'
+    let greeting:string="C component with frontmatter in aggreate astro components"
+    // Only absolute URLs are supported (https)
+    // let response = await fetch('https://script.google.com/macros/s/AKfycbw5PnzwybI_VoZaHz65TpA5DYuLkxIF-HUGjJ6jRTOje0E6bVo/exec?name=${name}&age=${age}');
+    // const htmlData= await response.text();    
+    // console.log(htmlData)
+    
+---
+<!-- raw HTML templating -->
+<div class="children">
+  <h1 id="greeting" style="color:aqua">Hello Astro (C1)</h1>
+  <div id="greeting2">
+    <p>Hello Astro (C2)</p>
+  </div>
+  <div id="hdata">!!!</div>
+  <p style="color:blueviolet">{greeting}</p>
+  <button onclick="document.getElementById('greeting').innerHTML = Date()">Change Taiwan 一番 to Date()</button>
+  
+  <Tour />
+</div>
+<!-- astro component with javascript , put js code in html script tag -->
+<script>
+  // 抓不到 frontmatter 變數值
+  document.getElementById("greeting").innerText ="Taiwan 一番"  
+  document.getElementById("greeting2").innerHTML='<h1><p style="color:green" >God Bless me</p></h1>';
+  
+  // let uri = 'https://script.google.com/macros/s/AKfycbw5PnzwybI_VoZaHz65TpA5DYuLkxIF-HUGjJ6jRTOje0E6bVo/exec?name=${name}&age=${age}';
+
+  // fetch remote content to update page content
+  let uri = 'https://script.google.com/macros/s/AKfycbw5PnzwybI_VoZaHz65TpA5DYuLkxIF-HUGjJ6jRTOje0E6bVo/exec?name=${小甜甜}&age=${50}';
+  fetch(uri, {method:'GET'})
+  .then(res => {
+      return res.text();   // 使用 text() 可以得到純文字 String
+  }).then(result => {
+      console.log(result); // 得到「你的名字是：oxxo，年紀：18 歲。」
+      document.getElementById("hdata").innerText=result;
+  });
+  
+   
+</script>

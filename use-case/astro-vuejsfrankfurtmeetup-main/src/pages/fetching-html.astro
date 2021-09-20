@@ -1,0 +1,11 @@
+---
+// Example: Astro component scripts run at build time
+const response = await fetch('http://example.com/movies.json');
+const data = await response.text();
+console.log(data);
+---
+<!-- Output the result to the page -->
+<article>
+  <div innerHTML={data}></div>
+</article>
+

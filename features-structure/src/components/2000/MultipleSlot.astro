@@ -1,0 +1,78 @@
+---
+export interface Props {
+  head?: boolean;
+}
+
+const { 
+	head=false
+} = Astro.props
+
+import { default as Button } from './Button.astro'
+---
+
+
+<!-- Astro use <slot> tag to enable component composition -->
+<header>
+    <!-- children with the `slot="header"` attribute will go here -->
+    <slot name="header">
+    <!-- ⭐⭐⭐⭐⭐header fallback content ==== default content --> 
+    <h1>header fallback content</h1>
+    </slot>    
+</header>   
+
+
+<div >
+<!-- use multiple element -->
+  { 
+      head ? (
+     <Fragment>
+        <p>head 1</p>
+        <p>head 2</p>
+    </Fragment>     
+) : null }  
+
+<!-- use single/mutiple component -->
+  { 
+      head ? ( 
+          <Fragment>
+            <Button>I’m a Tailwind Button!</Button>
+            <Button>I’m a USA Button!</Button>
+          </Fragment> 
+           ) : null }   
+
+
+<!--  use nested element -->
+{ 
+      head ? (
+        <ul>
+        　<li>星期一</li>
+        　<li>星期二</li>
+        　<li>星期三</li>
+        </ul>     
+) : null }  
+
+
+<!-- ()內,html 不能含有備註 -->
+{ 
+      head ? (
+        <header>    
+            <slot name="header">    
+            <h1>header fallback⭐⭐⭐ content</h1>
+            </slot>    
+        </header>    
+) : null }  
+
+ 
+  
+
+  <main>
+    <!-- children without a `slot` (or with the `slot="default"`) attribute will go here -->
+    <slot >
+      default fallback content
+    </slot>
+  </main>
+  <footer>
+    <!-- children with the `slot="footer"` attribute will go here -->
+    <slot name="footer" />
+  </footer>
+</div>

@@ -1,0 +1,34 @@
+---  
+// import class from [javascript]    
+import {Snake,Horse} from '../types/animals/index.js'
+// import const from [Javasscript]
+import {items,animals,brands} from '../consts/jsCollections/index.js' ; 
+const sam = new Snake("Sammy the Python");
+const tom = new Horse("Tommy the Palomino");    
+---
+
+<p>same move:{sam.move()}</p>
+<p>tom.move:{tom.move(30)}</p>    
+<!--!!!! multiple element content : 只能放在 page componnent 目錄 ,不能放在Components 目錄內 -->
+<br>
+<ul>
+{
+  items.reverse().map(item=><li>{item}</li>)  
+}
+</ul>    
+
+<br>
+<ul>
+{
+  brands.reverse().map(item=><li>{item}</li>)  
+}
+</ul>    
+
+<ul>
+{
+  animals.reverse().map(item=><li>{item}</li>)  
+}
+</ul>    
+
+
+

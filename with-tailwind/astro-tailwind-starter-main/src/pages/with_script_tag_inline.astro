@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+let foo="foo in frontmatter (inline)"
+let ownerData={
+    name:"bush",
+    title:"president",
+    occupation:["doctor","salesman","chairman"],
+    job:{
+        title:"chief",
+        salary:500
+    }
+}
+
+
+
+---
+<BaseLayout title="script tag inline" description="this is simple contacts page description">
+    <script type="module" async>
+        import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+        confetti();
+    </script>
+    
+    <h1> JavaScript Tutorials</h1>
+    <p>This page contains multiple script tags.</p>
+    <div  id="myxx"  
+         data-foo={foo}       
+         data-columns="3"
+         data-index-number="12314"
+        data-parent="cars"          
+       >             
+        foo in div
+    </div>
+    <!-- data-* , * 只允許one word, 其值不允許是物件-->
+    <div  id="yy"             
+        data-name={ownerData.name}
+        data-title={ownerData.title}
+        data-occupation={ownerData.occupation}
+        data-jobtitle={ownerData.job.title}
+       >             
+        owner data         
+    </div>
+    
+    
+    <script defer>
+           const xfoo = document.querySelector('#myxx');  
+           xfoo.innerText = xfoo.dataset.foo     
+           console.log("foo:",xfoo.dataset.foo)
+           console.log("parent:",xfoo.dataset.parent)
+           console.log("columns:",xfoo.dataset.columns)
+
+           const ownerSelector = document.querySelector('#yy');  
+           ownerSelector.innerText = ownerSelector.dataset.name +" "+ownerSelector.dataset.title+" "+ownerSelector.dataset.occupation + " "+ownerSelector.dataset.jobtitle   
+           
+            
+            
+            
+            
+            // 將字串屬性值,轉成arrary
+            let arr=ownerSelector.dataset.occupation.split(",")
+            console.log(arr[0])
+            console.log(arr[1])
+            console.log(arr[2])
+            // console.log("title:",ownerSelector.dataset.owner.title)
+            // console.log("name:",ownerSelector.dataset.owner.name)
+           
+    </script>  
+   
+    
+    
+    
+    <script defer>
+        alert('Executing JavaScript 1')      
+    </script>      
+    
+    <script defer>
+        alert('Executing JavaScript 2')
+    </script>
+
+     
+    
+     
+</BaseLayout>    

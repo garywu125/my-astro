@@ -1,0 +1,90 @@
+---
+import {Techs} from './techs.ts';
+const techs = new Techs();
+---
+
+<style lang="scss">
+.current {
+  font-size: .65rem;
+}
+
+.timeline-wrapper {
+  margin-top: 1em;
+  overflow-x: auto;
+  border: 2px solid #000;
+  background: rgba(255 255 255 / .4);
+}
+
+.timeline {
+  width: 100%;
+  .year {
+    font-weight: 700;
+    text-align: left;
+  }
+  .tech {
+    background: #000000;
+    font-size: .8em;
+    padding: 0 .5em;
+    transition: all .1s;
+    a {
+      font-weight: 400;
+      color: inherit;
+    }
+  }
+  td, th {
+    min-width: 4em;
+    border-radius: .2em;
+  }
+  tbody tr {
+    background: var(--background);
+    transition: background .1s;
+    &:hover {
+      background: #e0e0db;
+      .tech {
+      }
+    }
+  }
+}
+</style>
+
+
+<div class="timeline-wrapper">
+  <table class="timeline">
+    <thead>
+    <tr>
+      {
+        techs.years.map(y => (
+          <th class="year">{ y }</th>
+        ))
+      }
+    </tr>
+    </thead>
+    <tbody>
+    {
+      techs.timeline.map(tl =>
+        <tr>
+          {
+            tl.techs.map((t, index) => (
+              <div>
+                { index === 0 && t.start > techs.starterYear && <td colspan={t.start - techs.starterYear}></td> }
+                <td
+                  class="tech"
+                  colspan={ (t.end ? t.end - t.start : techs.currentYear - t.start) + 1 }
+                  style={ `background: ${t.background}; color: ${t.color || '#fff'};` }
+                >
+                  { t.link ? <a href={ t.link }>{ t.title }</a> : <span>{ t.title }</span> }
+                  { t.main && <span>⭐</span> }
+                </td>
+              </div>
+            ))
+          }
+        </tr>
+      )
+    }
+    </tbody>
+  </table>
+</div>
+
+<p class="current">
+  ⭐ — current priority tech.
+</p>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'  
+import Collection from '../components/Collection.astro'
+import {contentX,myClosure,Rabbit,User} from '../consts/jsCollections/index.js'  // imported nested array
+// function as a component : 只能使用在 frontmatter,不能放在javascript code file
+const ShouldSkip = () => <>
+                           <p> haha </p> 
+                           <p> haha </p> 
+                           <p> content </p> 
+                         </>  
+
+const myRabbit=new Rabbit("White Rabbit")
+const bob=new User("Bob")
+const bobName=bob.getName()
+---
+<BaseLayout title="nested array map Page" description="this is simple home page description">
+<h2  class="text-center text-4xl text-green-400">nested array map </h2> 
+<p class="text-center text-2xl ml-5 text-blue-400 mb-5"> return single value using fragement</p>  
+
+<!-- <div class="mt-5">
+    <Animals />    
+</div> -->
+
+<div class="mt-5">
+    <Collection />
+</div>
+
+<!--!!!! 注意 : fragement  只能放在 pages 目錄 ,不能放在Components 目錄內 -->
+ <div class="mt-5">	
+    {contentX.map((parent) => (
+      <>
+        <h2>{parent.name}</h2>
+        <div>
+          {parent.children.map((child) => (
+            <>
+              <span>{child.name}</span>
+              <span>{child.age}</span>
+            </>
+           ))}
+        </div>
+      </>
+    ))}
+</div>
+<div class="mt-5">
+    <p class="text-green-400">value from class :{bob.name}</p>
+    <p class="text-red-400">value from class( privat method not work) :{bobName}</p>
+    <p>value from class :{myRabbit.run(5)}</p>
+    <p>value from class :{myRabbit.stop()}</p>
+</div>
+<div class="mt-5">
+    <p>value from closure :{myClosure()}</p>
+</div>
+<div class="mt-5">
+    <ShouldSkip />
+</div>
+</BaseLayout>

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'   
+// import local data located in public/json 
+import authorData from '/json/authors.json'
+
+---
+<BaseLayout title="my fetch" description="this is simple home page description">
+
+<p> {authorData.don.name} </p> 
+<ul> Articles:
+    {
+      authorData.don.article.map((item)=>
+        <li class="ml-10">
+           {item}
+        </li>
+
+      )  
+    }
+</ul>
+<p> {authorData.sancho.name} </p> 
+<ul> Articles:
+    {
+      authorData.sancho.article.map((item)=>
+        <li class="ml-10">
+           {item}
+        </li>
+
+      )  
+    }
+</ul>
+
+<hr>
+<p>authors Data:{JSON.stringify(authorData)}</p>
+</BaseLayout>    

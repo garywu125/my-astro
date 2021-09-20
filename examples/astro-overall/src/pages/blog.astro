@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Markdown } from 'astro/components'
+let allPosts = Astro.fetchContent('../pages/posts/*.md');
+allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+//let sortedPosts = allPosts.slice().sort((a, b) => b.ordinal - a.ordinal)
+
+---
+<BaseLayout title="My Blog">
+  <main>
+    <Markdown>
+    
+    ## The Code:
+
+    This is **src/pages/blog.astro** which is generated from markdown files located in **src/pages/posts/** using: 
+
+```js
+---
+let allPosts = Astro.fetchContent('./posts/*.md');
+allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+ Astro.fetchContent('src/pages/posts/*.md')
+ ---
+ <div>
+  {allPosts.slice(0, 3).map((post) => (
+    <article>
+      <h1>{post.title}</h1>
+      <p>{post.url}</p>
+      <p>{post.description}</p>
+      <p>{new Date(post.date).toISOString().slice(0, 10)}</p>
+      <a href={post.url}>Read more</a>
+    </article>
+  ))}
+</div>
+ ```
+
+ ## The Content:
+ 
+ Here is the listing of the three most recent posts:
+</Markdown>
+
+<p>(To troubleshoot: the `{post.url}` in my development environment is <em>/posts/first-post</em> but in my Netlify build, it's <em>/first-post</em>)</p>
+
+
+
+ <div>
+  {allPosts.slice(0, 3).map((post) => (
+    <article>
+      <h3>{post.title}</h3>
+      <p style="font-size: 0.8em;"><em>{post.url}</em></p>
+      <p>{post.description}</p>
+      <p>{new Date(post.date).toISOString().slice(0, 10)}</p>
+      <a style="font-size: 0.8em;" href={post.url}>Read more</a>
+      <hr>
+    </article>
+  ))}
+</div>
+</main>
+</BaseLayout>

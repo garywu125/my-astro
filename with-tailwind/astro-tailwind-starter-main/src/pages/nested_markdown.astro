@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { Markdown } from 'astro/components';
+
+const content = await fetch('https://raw.githubusercontent.com/snowpackjs/snowpack/main/README.md').then(res => res.text());
+---
+
+<BaseLayout title="nested static/dynamic Markdown" description="this is simple home page description">
+  <!-- move here will be ok !!  -->
+  <!-- <Markdown content={content} /> -->
+
+  <Markdown >     
+            # __Nested Static__/__Dynamic__ with __Local__/__Remote__ Markdown example
+
+            Here we have some __Markdown__ code. We can also dynamically render content from remote places.        
+            
+            ```astro
+            ---
+            import { Markdown } from 'astro/components';
+            import BaseLayout from '../layouts/BaseLayout.astro'
+            import ThingOne from '../components/ThingOne.astro'
+            import ThingTwo from '../components/ThingTwo.astro'
+            const maybe=true
+            ---
+            <h2>conditional component</h2>    
+            <div>
+                {maybe?<ThingOne />:<ThingTwo /> }
+            </div>    
+            ```             
+              <!-- mix conent will syntax highlight no effect  -->
+            <Markdown content={content} /> 
+    </Markdown>       
+    <!-- move here will cause error!! ???????       -->
+    <!-- <Markdown content={content} />         -->
+    
+</BaseLayout>

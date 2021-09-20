@@ -1,0 +1,35 @@
+---
+import Markdown from 'astro/components';
+import Page from '../layouts/page.astro';
+import BlogPreviewList from '../components/BlogPreviewList.astro'
+// import POSTS from '../data/posts.json';
+
+let title = 'Blog';
+let description = 'All the articles posted so far...';
+
+const posts = Astro.fetchContent('./post/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
+---
+
+<Page content={{ title, description }}>
+    <div class="bg-green-300 border-green-600 border-b p-4 m-4 rounded">
+      Hello World ### in page
+</div>   
+
+<div class="grid grid-flow-col grid-rows-2 grid-cols-3 gap-4 bg-pink-100">
+  <div>
+    1
+  </div>
+  <div class="col-start-3">
+    2
+  </div>
+  <div>
+    3
+  </div>
+  <div>
+    4
+  </div>
+  <div class="row-start-1 col-start-2 col-span-2">
+    5
+  </div>
+</div>
+</Page>

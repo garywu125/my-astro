@@ -1,0 +1,21 @@
+---
+// Component Imports
+// import Button from '../components/lib/Button.astro';
+import { Button ,Menu,Badge} from '../base/index.js';
+import {Counter as ReactCounter }  from './react_1000/index.js';
+import {VueCounter} from './vue_1000/index.js';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+import Greeting from './Greeting.astro'
+---
+
+<!-- build a layout -->
+<div class="text-blueGray-700" >
+    <Greeting>Hi ,台灣</Greeting> 
+    <Button>I’m a Tailwind Button!</Button>
+    <Menu />
+    <Badge />   
+    <ReactCounter client:load />
+    <VueCounter client:load /> 
+</div>

@@ -1,0 +1,27 @@
+---
+import Tour from '../components/Tour.astro'  
+const { content } = Astro.props;
+---
+
+<html>
+  <head>
+    <title>{content.title}</title>
+  </head>
+
+  <body>
+  <!-- [content.pros] data come from  [fornt matter key ] in md file -->
+    <h1>[content.pros] data come from  [fornt matter key ] in md file</h1> 
+    <p>{content.date}</p>
+    <p>{content.author}</p>
+    <p>{content.description}</p>
+    <p>{content.duration}</p>
+    <!-- add component -->   
+    <hr>    
+    <h1>&lt;slot&gt; tag will hold content in md file</h1> 
+    <br>
+    <slot/>
+    <hr>
+    <h1>Add componemts in layout component</h1> 
+     <Tour />
+  </body>
+</html>

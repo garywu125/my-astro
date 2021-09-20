@@ -1,0 +1,151 @@
+---
+let title = 'My Astro Site';
+import Debug from 'astro/debug';
+import { Markdown,Prism } from 'astro/components'
+
+import  VueCounter  from '../components/myvue/VueCounter.vue';
+import {Counter as ReactCounter }  from '../components/myreact/ReactCounter.jsx';
+// import { VueCounter } from '../components/myvue/index.js';  ??? vue 無法使用aggregate module (index.js)??
+// import {Counter as ReactCounter }  from '../components/myreact/index.js';   ??? react 無法使用aggregate module (index.js)??
+
+// import  VueCounter  from '../components/astro_group_a/VueCounter.vue'; 
+// import {Counter as ReactCounter }  from '../components/astro_group_a/ReactCounter.jsx'; 
+
+
+
+import { AA, AB as Renamed } from '../components/astro_group_a/index.js';
+import { B1, B2 as Balias } from  '../components/astro_group_b/index.js';
+import { U1, U2,U3,U4 } from  '../components/utility/astro/index.js';
+
+
+import site from '../data/site.json'
+const {nav}=site
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/style/global.css">
+</head>
+<body>
+      
+    <div class="bg-gradient-to-br from-indigo-900 to-green-900 min-h-screen overflow-auto">
+        <div class="container max-w-5xl mx-auto px-4">
+            <div class="w-4/5 mx-auto">
+                <h1 class="mt-32 text-white text-6xl font-bold"><img width="60" height="80" src="/assets/logo.svg" alt="Astro logo"> Welcome to <a href="https://astro.build/">Astro</a></h1>
+            </div>
+            <div class="w-4/5 my-10 mx-auto">
+                <h3 class="text-gray-300">Build faster websites with less <strong class="text-white">client-side Javascript</strong>
+                <br />
+                This is how easy it is to get started</h3>
+            </div>
+            <div class="w-2/5 mx-auto bg-black text-white p-10 leading-10 rounded-2xl shadow-lg">
+                mkdir astro<br />
+                cd astro<br />
+                npm init astro
+            </div>
+        </div>
+    </div>
+    
+   
+    
+    <div class="bg-gray-400">
+        <Markdown >
+            ```astro
+            ---
+            import BaseLayout from '../layouts/BaseLayout.astro';
+
+            const allPokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=5`);
+            const allPokemonResult = await allPokemonResponse.json();
+            const allPokemon = allPokemonResult.results;
+            ---
+            <BaseLayout title="Data Fetching" >
+                <h1>Fetching Data</h1>
+                <h3>Here is an example of making an external API call (fetching in the code fence)</h3>
+                {allPokemon.map((pokemon) => (<p>{pokemon.name}</p>))}
+            </BaseLayout>
+            ```
+            # A collapsible section with markdown
+            <details>
+            <summary>Click to expand!</summary>
+            
+            ## Heading
+            1. A numbered
+            2. list
+                * With some
+                * Sub bullets
+            </details>
+        </Markdown>
+    </div>
+    
+    <div class="bg-gray-200">       
+        <Markdown>
+            ```astro
+            ---
+            import iconReference from "../../public/assets/logo.svg"
+            ---
+
+            <header>
+            <div class="container flex items-center my-6">
+                <div class="flex-grow">
+                <img src="{iconReference}" alt="JP's face" height="48px" width="48px" />
+                </div>
+                <div>
+                <a href="/">Home</a>
+                </div>
+            </div>
+            </header>
+        ```
+        </Markdown>
+    </div>
+    <VueCounter client:visible>
+            <h1 >Hello Vue!</h1>
+    </VueCounter>
+     <ReactCounter client:visible >
+            <h1>Hello React!</h1>
+            <p>What's up?</p>
+     </ReactCounter>    
+     <hr>
+     <AA />        
+     <Renamed />
+     <hr>
+     <B1 />        
+     <Balias />
+     <hr>
+     <Debug {title} />
+     <hr>
+     <U1 />
+     <U2 />
+     <U3 />
+     <U4 />
+     <hr>
+     <Debug {nav}} />
+     <ul>
+     {
+       nav.map((item,i)=><>
+                 <li>{item.name}<span class="ml-10">{item.link}</span></li>         
+               </>)
+     }
+     </ul>
+
+ 
+
+<h3>renders as...</h3>
+  <Prism lang="js" code={` 
+    // In your gatsby-config.js
+    plugins: [
+      {
+        resolve: \`gatsby-transformer-remark\`,
+        options: {
+          plugins: [
+            \`gatsby-remark-prismjs\`,
+          ],
+        },
+      },
+    ],
+  `} />
+
+</body>
+</html>

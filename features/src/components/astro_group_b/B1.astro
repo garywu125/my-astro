@@ -1,0 +1,21 @@
+---
+const topic="Hello Astro (B1 plus)"
+// function component
+// - component name have to uppercase  
+// - can only be define in front matter 
+// - can not import from .js file
+// import {C,ShouldSkip} from './my.js'
+const Afunc = ()=><h1> this is B1-4</h1>
+const ShouldSkip = () => <>
+                           <p> B1-1 </p> 
+                           <p> B1-2 </p> 
+                           <p> B1-3 </p> 
+                         </>  
+
+
+---
+<div class="children">
+  <h1>{topic}</h1>
+</div>
+<Afunc />
+<ShouldSkip />

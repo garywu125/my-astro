@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+// ???? https://github.com/snowpackjs/astro/issues/1106   我猜 : 應該用 class type 取代 import const function
+// import { fetched_metadata,fetched_employee } from '../api/fetched.js'
+// const metadata = await fetched_metadata()
+// const employees = await  fetched_employee()
+
+
+// import FetchGameApi from '../api/FetchGameApi.js'
+// const gameApi= await FetchGameApi.getGamesFetch()
+// console.log(gameApi)
+
+
+
+---
+<BaseLayout title="my fetch" description="this is simple home page description">
+    <!-- <p  class="text-2xl text-blue-400 mb-5"> fetch from json file located in /public/</p>
+    <h1>{metadata.siteTitle}</h1>
+  <p> fetch data in public/json :(fetch via imported const js function ????) :
+    <span>{employees.employee.name}</span>
+  </p>
+  
+    <p>fetch script in /API Directoy (fetch via imported js class )  :
+    <span>{JSON.stringify(gameApi)}</span>
+    </p>
+     -->
+
+  
+<table>
+  <tr>
+    <td>Hello</td>
+  </tr><script
+    type="module"
+    src="data:text/javascript,"
+    onload="let e=this.previousSibling;this.remove(),e.onclick=e=>{console.log(e.target)}"
+  ></script>
+  <tr>
+    <td>Goodbye</td>
+  </tr><script
+    type="module"
+    src="data:text/javascript,"
+    onload="let e=this.previousSibling;this.remove(),e.onclick=e=>{console.log(e.target)}"
+  ></script>
+</table>
+    
+</BaseLayout>

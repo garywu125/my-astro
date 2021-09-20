@@ -1,0 +1,35 @@
+---
+import MainLayout from '../components/MainLayout.astro';
+import BaseHead from '../components/BaseHead.astro';
+
+const { content } = Astro.props
+---
+
+<html lang="en">
+    <head>
+        <BaseHead
+            title={content.title ? `Astro - Note | ${content.title}` : 'Astro - Note'}
+            description={content.description}                      
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> 
+    </head>
+    <body >
+    <div class="fixed bottom-0 left-0 text-red-500 border-t-2 border-green-600">
+        <p>Absolute child</p>
+    </div>
+        <MainLayout>
+            <!-- page: frontmatter -->
+
+            <h1 class="text-center text-gray-700">{content.title}</h1>
+            <h5 class="text-center text-gray-500">{content.description}</h5>
+
+            <!-- post: separator -->
+            <hr />
+
+            <!-- post: content -->
+            <section >
+                <slot />
+            </section>
+        </MainLayout>
+    </body>
+</html>
