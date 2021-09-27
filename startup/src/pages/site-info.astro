@@ -1,0 +1,14 @@
+---
+import site from '../data/site.json'
+const {nav}=site
+---
+ 
+ <ul>
+     {
+       nav.map((item,i)=><>
+                 <li>{item.name}<span style="margin-left:10px">{item.link}</span></li>         
+               </>)
+     }
+</ul>
+
+<p>file location:{import.meta.url}</p>   

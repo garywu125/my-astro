@@ -16,9 +16,12 @@ let title = 'My Astro Site';
 let name = 'Cassidy'
 let food = ['apple', 'banana', 'cake']
 const expressions = 'Lorem ipsum';
+const color="indigo";
 
 // Full Astro Component Syntax:
 // https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/astro-components.md
+
+import { Code } from 'astro/components';
 ---
 <html lang="en">
 <head>
@@ -26,16 +29,17 @@ const expressions = 'Lorem ipsum';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="/style/global.css">
-    <link rel="stylesheet" href="/style/home.css">
+    <link rel="stylesheet" href={Astro.resolve("../style/global.css")}>
+    <link rel="stylesheet" href={Astro.resolve("../style/home.css")}>
 
-    <style>
+    <style define:vars={{color}}>
     /* page css */
         header {
             display: flex;
             flex-direction: column;
             gap: 1em;
             max-width: min(100%, 68ch);
+            background: var(--color);
         }
     </style>
 </head>
@@ -57,6 +61,7 @@ const expressions = 'Lorem ipsum';
 
         <!-- <Tour client:load client:media="(max-width: 768px)" />         -->
         <!-- <Tour client:idle />         -->
+
         <!-- remote markdown : dynamic content-->
         <Markdown content={content} />
 
@@ -67,6 +72,11 @@ const expressions = 'Lorem ipsum';
             <!-- <Tour:visible />     
                                -->
             **Everything** supported in a `.md` file is also supported here!
+
+            > Milkdown is a WYSIWYG markdown editor framework.
+            >
+            > 🍼 Here is the [repo](https://github.com/Saul-Mirone/milkdown) (right click to open link).
+            > We ~~only support commonmark~~. GFM is also supported!
 
             There is _zero_ runtime overhead.
 
@@ -92,7 +102,41 @@ const expressions = 'Lorem ipsum';
                 3. Mako shark
                 4. Hammerhead shark
                 5. Great white
-                    - Jaws                                                                                  
+                    - Jaws      
+
+                 
+
+    *   Features
+
+    *   [x] 📝 **WYSIWYG Markdown** - Write markdown in an elegant way
+
+        *   [x] 🎨 **Themable** - Theme can be shared and used with npm packages
+
+        *   [x] 🎮 **Hackable** - Support your awesome idea by plugin
+
+        *   [x] 🦾 **Reliable** - Built on top of [prosemirror](https://prosemirror.net/) and [remark](https://github.com/remarkjs/remark)
+
+        *   [x] ⚡ **Slash & Tooltip** - Write fast for everyone, driven by plugin
+
+        *   [x] 🧮 **Math** - LaTeX math equations support, driven by plugin
+
+        *   [x] 📊 **Table** - Table support with fluent ui, driven by plugin
+
+        *   [x] 📰 **Diagram** - Diagram support with [mermaid](https://mermaid-js.github.io/mermaid/#/)，driven by plugin
+
+        *   [x] 🍻 **Collaborate** - Shared editing support with [yjs](https://docs.yjs.dev/), driven by plugin
+
+        *   [x] 💾 **Clipboard** - Support copy and paste markdown, driven by plugin
+
+        *   [x] 👍 **Emoji** - Support emoji shortcut and picker, driven by plugin
+
+*   Made by
+
+    *   Programmer: [Mirone](https://github.com/Saul-Mirone)
+
+    *   Designer: [Meo](https://www.meo.cool/)
+
+***                                    
         </Markdown>
 
 
@@ -113,6 +157,19 @@ const expressions = 'Lorem ipsum';
            - See https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/component-hydration.md 
            -->
          <Tour client:visible />   
-    </main>
+    </main>    
+    <!-- src 必須使用.js,不能使用.ts,因為build tool: snowpack 的限制 
+    <script type="module"  src={Astro.resolve('../utils/user.js')}/>      -->
+
+    <!-- Error: Astro.resolve('relative-path') 不能與 hoist 一起使用 -->
+    <!-- <script type="module"  src={Astro.resolve('../utils/user.js')} hoist /> -->
+    
+    <!-- Syntax highlight some JavaScript code. -->
+<Code code={`const foo = 'bar';`} lang="js" />
+<!-- Optional: customize your theme. -->
+<Code code={`const foo = 'bar';`} lang="js" theme="dark-plus" />
+<!-- Optional: Enable word wrapping. -->
+<Code code={`const foo = 'bar';`} lang="js" wrap />
+    
 </body>
 </html>
