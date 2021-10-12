@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "astro": "^0.20.7"
+  },
+  "dependencies": {
+    "@hashicorp/remark-plugins": "^3.2.1"
   }
 }

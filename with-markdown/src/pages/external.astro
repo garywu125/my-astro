@@ -4,6 +4,7 @@ import Layout from '../layouts/main.astro';
 
 const title = `External Markdown`;
 const content = `Markdown *content* to render`;
+const flag=false;
 ---
 
 <Layout content={{ title }}>
@@ -12,6 +13,30 @@ const content = `Markdown *content* to render`;
       <Markdown {content} />
       <p>Some other stuff</p>
     </div>
+
+<!-- conditional switch HTML template -->
+{
+flag?<fragment>
+	   <h1>haha1</h1>
+	   <h2>haha2</h2>
+	</fragment>
+:<fragment>
+	   <h3>gg3</h3>
+	   <h4>gg4</h4>
+	</fragment>
+}
+
+<!-- add <script> tag example -->
+
     <p>Lastly...</p>
+    <h1>Not clicked</h1>
+    <button>Click to change heading</button>
+    <script>
+    document.querySelector("button").addEventListener("click",() => {
+        document.querySelector("h1").innerText = "clicked"
+    })
+    </script>
+   
   </main>
 </Layout>
+

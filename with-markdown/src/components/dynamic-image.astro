@@ -1,0 +1,8 @@
+---
+const {SecialImg}=Astro.props;  //預設值
+const imgURL=SecialImg?SecialImg:"default image path";
+---
+
+<section>
+    <p>Dynamic Image : <span>{imgURL}</span> </p>        
+</section>

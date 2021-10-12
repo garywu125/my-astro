@@ -1,0 +1,11 @@
+---
+// Example: <SomeComponent />  (WARNING: "name" prop is required)
+export interface Props {
+  firstName: string;
+  greeting?: string;
+}
+const { greeting = 'Hello', firstName } = Astro.props;
+---
+<div>
+    <h1>{greeting}, {firstName}!</h1>
+</div>

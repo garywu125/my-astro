@@ -2,10 +2,13 @@
 // Component Imports
 import { Markdown ,Code} from 'astro/components';
 import Layout from '../layouts/main.astro';
+import DynamicImage from '../components/dynamic-image.astro';
 import ReactCounter from '../components/ReactCounter.jsx';
 import PreactCounter from '../components/PreactCounter.tsx';
 import VueCounter from '../components/VueCounter.vue';
 import SvelteCounter from '../components/SvelteCounter.svelte';
+
+import Greeting from "../components/Greeting.astro"
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -14,11 +17,61 @@ import SvelteCounter from '../components/SvelteCounter.svelte';
 const title = 'Astro Markdown';
 const variable = 'content';
 const items = ['A', 'B', 'C'];
+const myGreeting={ firstName: 'xxxx',
+  greeting: 'xxxx greeting'}
+// react element
+const element1 = (
+  <div>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </div>
+);
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+const element2 = (
+   <>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </>
+)  
+
+function getGreeting(user) {
+  if (user) {
+    return <h1>Hello, {user.toUpperCase()}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+
+
+
+
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const　element3 = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+
+const ShouldSkip = () => <>
+                           <p> haha </p> 
+                           <p> haha </p> 
+                           <p> content </p> 
+                         </>
+
+
 ---
 <Layout content={{ title }}>
+
+   
+
 
   <Markdown>
     # Introducing {title}
@@ -61,9 +114,38 @@ const items = ['A', 'B', 'C'];
     ```
 
   </Markdown>
+ <h2>Markdown code block with syntax highlight using Astro &lt;Markdown&gt; component</h2>
+   <Markdown>
+        ```astro
+        ---
+        import BaseLayout from '../layouts/BaseLayout.astro';
+
+        const allPokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=5`);
+        const allPokemonResult = await allPokemonResponse.json();
+        const allPokemon = allPokemonResult.results;
+        ---
+        <BaseLayout title="Data Fetching" >
+            <h1>Fetching Data</h1>
+            <h3>Here is an example of making an external API call (fetching in the code fence)</h3>
+            {allPokemon.map((pokemon) => (<p>{pokemon.name}</p>))}
+        </BaseLayout>
+        ```
+    </Markdown>
 
   <h2>Astro  Component &lt;Code&gt;</h2>
   <!-- Syntax highlight some JavaScript code. -->
+
+
+
+<!-- ??? fontmatter script block can not put inside Code component ????? -->
+<!-- <Code code={` 
+<BaseLayout title="Data Fetching" >
+        <h1>Fetching Data</h1>
+        <h3>Here is an example of making an external API call (fetching in the code fence)</h3>
+        {allPokemon.map((pokemon) => (<p>{pokemon.name}</p>))}
+</BaseLayout>
+    `} lang="astro" /> -->
+
 <Code code={`
 import Something from './another';
 const thing = new Something();
@@ -72,4 +154,48 @@ const thing = new Something();
 <Code code={`const foo = 'bar';`} lang="js" theme="dark-plus" />
 <!-- Optional: Enable word wrapping. -->
 <Code code={`const foo = 'bar';`} lang="js" wrap />
+
+<DynamicImage SecialImg=""></DynamicImage>
+
+<Greeting greeting="(Optional with default) Hello" firstName="gary" />
+
+<Greeting {...myGreeting} />
+<!-- <Greeting myGreeting /> -->
+
+<Markdown>
+# JS operator
+
+- [ ]  **one**
+- [x]  *two*
+- [x]  ~~three~~
+
+
+## 空值聯合運算子（nullish coalescing operator）
+
+```tsx
+// 當左側的值是 undefined 或 null 時，則回傳右側的值
+undefined ?? 'foo'; // foo
+null ?? 'foo'; // foo
+
+// 除了 undefined 或 null 之外，則都會回傳左側的值
+false ?? 'foo'; // false
+0 ?? 'foo'; // 0
+```
+
+```jsx
+let lang = 'en';
+---
+
+<html lang={ lang ?? 'en' }>
+```
+
+</Markdown>
+{element1}
+{element2}
+{getGreeting()}
+{getGreeting("tiger wu")}
+{element3}
+
+<ShouldSkip />
+
 </Layout>
