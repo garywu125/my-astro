@@ -1,11 +1,22 @@
 ---
 // Example: <SomeComponent />  (WARNING: "name" prop is required)
+import { Code } from 'astro/components';
+//---
 export interface Props {
   firstName: string;
   greeting?: string;
 }
+//---
 const { greeting = 'Hello', firstName } = Astro.props;
 ---
 <div>
-    <h1>{greeting}, {firstName}!</h1>
+    <h1>change Astro.props to props : {greeting}, {firstName}!</h1>
 </div>
+<Code 
+  code={`
+  const foo = 'bar';
+  const fruit= '蓮霧';
+  `} 
+  lang="js" 
+  theme="dark-plus" 
+/>

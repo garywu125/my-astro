@@ -1,0 +1,20 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+const { props } = Astro;
+const { 
+	title,
+	description
+} = props;  
+console.log("title:",title)
+---
+<p>Heading options</p>	
+{ title ? <h1>{title}</h1> : null }
+{ description ? (
+	<meta
+  	name="description"
+  	content={description}
+  />
+) : null }    

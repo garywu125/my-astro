@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.20.7"
+    "astro": "^0.20.12"
   },
   "dependencies": {
     "@hashicorp/remark-plugins": "^3.2.1"

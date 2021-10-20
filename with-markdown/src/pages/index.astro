@@ -9,6 +9,8 @@ import VueCounter from '../components/VueCounter.vue';
 import SvelteCounter from '../components/SvelteCounter.svelte';
 
 import Greeting from "../components/Greeting.astro"
+import HeadingOpts from "../components/HeadingOpts.astro"
+// ---
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -70,7 +72,7 @@ const ShouldSkip = () => <>
 ---
 <Layout content={{ title }}>
 
-   
+   <HeadingOpts title="黑白郎君" />
 
 
   <Markdown>
@@ -197,5 +199,9 @@ let lang = 'en';
 {element3}
 
 <ShouldSkip />
+
+
+
+
 
 </Layout>

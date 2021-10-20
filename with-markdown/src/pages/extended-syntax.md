@@ -1,12 +1,57 @@
 ---
-title: Basic Markdown
+title: Extended Markdown
 layout: ../layouts/main.astro
 ---
+
+
+# *Commment Block*
+
+<!-- comment block -->
 
 # Toggle Button
 
 <details>
+
+<summary> <em>List of groceries</em> </summary>
+
+* Vegetables
+* orange
+* pineapple
+
+</details>
+
+
+<details>
+  <summary>Epcot Center</summary>
+
+  Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.
+
+花若盛開,蝴蝶自來.\
+人若精彩,天自安排.
+
+半畝方塘一鑒開,\
+天光雲影共徘徊。\
+問渠哪得清如許？\
+為有源頭活水來。
+
+手把青秧插滿田，\
+低頭便見水中天；\
+六根清凈方為道，\
+退步原來是向前。
+
+```js
+var foo = 'bar';
+
+function doSomething() {
+  return foo;
+}
+```
+
+</details>
+
+<details>
   <summary>Click to see the log report</summary>
+
   Adds three new logging formats to the mod_log_config format specifications, including byte quantities received, sent, and transferred (combination of received and sent quantities). Normally included in the base Apache compile.
 LogIOTrackTTFB: Enables time tracking between the initial request read time and the moment the first byte response is sent.
 
@@ -18,8 +63,59 @@ This module is provided by default in many of the package distributions, but may
 
 </details>
 
+---
+
+# Task List
+
+- Wrappers
+    1. [ ] astro
+    1. [x] React
+    1. [x] Vue
+    1. [ ] Ember
+- tools
+    1. [x] npm
+    1. [x] report
+    1. [ ] UI
+
+
+---
+
+# Heading IDs
+
+EX. [🚀 My Great Heading](#my-great-heading)
+
+
+----
+
+# Footnote
+
+Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+
+[^1]: This is the first footnote.
+
+[^bignote]: Here's one with multiple paragraphs and code.
+
+    Indent paragraphs to include them in the footnote.
+
+    `{ my code }`
+
+    Add as many paragraphs as you like.
+
+---    
+
+
+
+
+---
 
 # tables
+
+```
+:---:  ⇒ Center alignment
+:---   ⇒ Left alignment
+---:   ⇒ Right alignment
+
+```
 
 | Syntax      | Description | Test Text     |
 | :---        |    :----:   |          ---: |
@@ -38,5 +134,16 @@ MISH's Live stream
 + lots more people came today!
 ````
 
-[1]: http://example.com/ "Title"
-[2]: http://example.org/ "Title"
+```diff
+function addTwoNumbers (num1, num2) {
+-  return 1 + 2
++  return num1 + num2
+}
+```
+
+---
+
+### My Great Heading
+
+
+
