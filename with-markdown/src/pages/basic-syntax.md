@@ -65,6 +65,8 @@ generate a line break on output.
 問渠哪得清如許？\
 為有源頭活水來。
 
+**為有源頭活水來。**
+
 ---
 
 # Blockquotes (縮排)
