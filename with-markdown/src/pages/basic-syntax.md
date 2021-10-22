@@ -146,8 +146,49 @@ Life is like **riding a bicycle**. To *keep your balance*, you must **keep movin
 
 At the command prompt, type `nano`.
 
+---
+
+# Inline HTML
+
+## definition list
+
+<dl>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. HTML <em>tags</em> do <b>work</b>, in most cases.</dd>
+</dl>
+
+<dl>
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. HTML tags work, in most cases.</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>
+
+  Does *not* work **very** well. HTML tags work, in most cases.
+
+  </dd>
+</dl>
 
 ---
+
+# Blockquote with callout
+
+> **Note:** This is how you write a note.
+>
+> It can have multiple lines.
+
+> **Warning:** This is how you write a warning.
+>
+> It can have multiple paragraphs.
+
+
+> **Callout:** **This is how you write a callout**.
+>
+> It can have multiple paragaphs.
+
 # Blockquote with mutiple line / other elements
 
 > this is quotation one
@@ -194,6 +235,8 @@ At the command prompt, type `nano`.
 ---
 
 # list
+
+
 
 ## bulleted list
 
@@ -328,8 +371,12 @@ using  `four` backtick to create fendce code block
 
 # Link    
 
+## Auto URL/EMAIL link
+
 - Automatic URL Linking :**直接輸入 網址 / Email Addresses**
 
+> www.example.com, https://example.com, and contact@example.com.
+>
 > Visit www.commonmark.org/help for more information.
 >
 > https://www.markdownguide.org
@@ -404,6 +451,23 @@ Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
 ![The San Juan Mountains are beautiful!](/san-juan-mountains.jpg "San Juan Mountains")
 
+
+# video 
+
+<video width="320" height="240" controls>
+  <source src="https://user-images.githubusercontent.com/58986949/115314310-805b2780-a1a7-11eb-8558-648a367ea231.mp4" type="video/mp4">
+</video>
+
+<video width="320" height="240" controls>
+  <source src="markdown_video.mp4" type="video/mp4">
+</video>
+
+
+# audio 
+<audio controls >  
+  <source src="markdown_audio.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
 
 # widget
 

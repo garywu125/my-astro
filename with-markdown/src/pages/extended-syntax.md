@@ -84,14 +84,19 @@ This module is provided by default in many of the package distributions, but may
 
 EX. [🚀 My Great Heading](#my-great-heading)
 
-
+ 
 ----
 
 # Footnote
 
-Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+- A note[^1]
 
-[^1]: This is the first footnote.
+[^1]: A frist note.
+
+
+- Here's a simple footnote,[^2] and here's a longer one.[^bignote]
+
+[^2]: This is the second footnote.
 
 [^bignote]: Here's one with multiple paragraphs and code.
 
