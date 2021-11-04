@@ -5,6 +5,9 @@ layout: ../layouts/main.astro
 
 # [ GFM markdown syntax refernce](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax )
 
+> *Markdown* is a way to *style* text on the web
+>
+
 # Check if markdown application  support HTML 
 
 ` Check your Markdown application’s documentation if support HTML in Markdown documents `
@@ -191,6 +194,19 @@ At the command prompt, type `nano`.
 
 # Blockquote with mutiple line / other elements
 
+> Astro hydrated component 先脫水選擇加水的時機加水
+> 
+> 
+> > NO JS by default: ,脫掉所有的javascript & client component . 可選擇opt in. 的時机 ,重新ydrate javascript so you can decide when to shipped to the end-user. each component will load separately and is not dependent upon another component loading.
+> > 
+> > - one
+> > - two
+> > - three
+> >     
+> >     > **Astro 元件的語法** : **Astro’s HTML-like component syntax which is similar to HTML + JSX.**
+> >     > 
+> > - four
+
 > this is quotation one
 >
 > > 🚀this is `nest` quotatiom
@@ -274,18 +290,27 @@ ___
     1. Preview
     ___    
   
-## todo list
+## Task list
 
 - Wrappers
     1. [ ] astro
     1. [x] React
     1. [x] Vue
     1. [ ] Ember
-- tools
+- Tools
     1. [x] npm
     1. [x] report
     1. [ ] UI
 
+
+- Nested task list
+    - [ ]  astro
+    - [x]  React
+    - [x]  Vue
+    - [ ]  tools
+        - [x]  npm
+        - [x]  report
+        - [ ]  UI
 ---
 
 # Adding Elements in List Item

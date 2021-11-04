@@ -3,6 +3,8 @@ title: Extended Markdown
 layout: ../layouts/main.astro
 ---
 
+
+
 # Styling markdown with inline HTML 
 
 - text color /underline(u element)
@@ -142,9 +144,7 @@ EX. [🚀 My Great Heading](#my-great-heading)
 
 [^bignote]: Here's one with multiple paragraphs and code.
 
-    Indent paragraphs to include them in the footnote.
-
-    `{ my code }`
+    Indent paragraphs to include them in the footnote. ` my code ` 
 
     Add as many paragraphs as you like.
 
@@ -156,6 +156,16 @@ EX. [🚀 My Great Heading](#my-great-heading)
 ---
 
 # tables
+
+- markdown table
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+
+
 
 ```
 :---:  ⇒ Center alignment
@@ -172,6 +182,34 @@ EX. [🚀 My Great Heading](#my-great-heading)
 | el | `Link To Heading ID` | [blockquote](#blockquote) |
 | el | `Link To Heading ID` | [javascript code block](#javascript-code-block) |
 
+- html table 
+
+two table side by side
+<table>
+<tr>
+<th>Heading 1</th>
+<th>Heading 2</th>
+</tr>
+<tr>
+
+<td>
+
+| A | B | C |
+|--|--|--|
+| 1 | 2 | 3 |
+
+</td><td>
+
+| A | B | C |
+|--|--|--|
+| 1 | 2 | 3 |
+
+</td></tr> </table>
+
+
+| A | B | C |
+|---|---|---|
+| 1 | 2 | 3 <br/> 4 <br/> 5 |
 
 # Diff viewer
 
@@ -190,7 +228,7 @@ function addTwoNumbers (num1, num2) {
 
 ---
 
-### My Great Heading
+
 
 
 

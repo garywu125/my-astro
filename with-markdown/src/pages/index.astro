@@ -10,6 +10,7 @@ import SvelteCounter from '../components/SvelteCounter.svelte';
 
 import Greeting from "../components/Greeting.astro"
 import HeadingOpts from "../components/HeadingOpts.astro"
+import {name} from './_data.js'
 // ---
 
 // Component Script:
@@ -71,7 +72,7 @@ const ShouldSkip = () => <>
 
 ---
 <Layout content={{ title }}>
-
+   <p>name : {name}</p>
    <HeadingOpts title="黑白郎君" />
 
 

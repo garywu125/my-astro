@@ -1,7 +1,7 @@
 ---
 import { Markdown } from 'astro/components';
 import Layout from '../layouts/main.astro';
-
+import imgReference from '../components/img/tux.png'
 const title = `External Markdown`;
 const content = `Markdown *content* to render`;
 const flag=false;
@@ -10,9 +10,18 @@ const flag=false;
 <Layout content={{ title }}>
   <main>
     <div>
+      <!-- markdown content from front matter Var-->      
       <Markdown {content} />
       <p>Some other stuff</p>
+      <!-- nested <Markdown> tag-->     
+      <Markdown>
+        <!-- inline markdown-->
+        ![tux](tux.png)
+        <!-- inline HTML && JSX -->
+        <img src={imgReference} />;
+      </Markdown>   
     </div>
+
 
 <!-- conditional switch HTML template -->
 {
