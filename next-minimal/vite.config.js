@@ -3,7 +3,7 @@ export default {
     // config options
     server:{
         hmr:{
-            overlay:true
+            overlay:false
         }
     }
   }
