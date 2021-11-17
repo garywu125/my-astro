@@ -19,7 +19,7 @@ layout: ../layouts/main.astro
 `heading 前後加空白行`
 
 
-# Heading 111
+# Heading 1
 
 ## heading 2
 
@@ -59,19 +59,24 @@ sdfsdf [link](https://tw.news.yahoo.com/)
 
 # 🚀Line break (換行)
 `To create a line break ( <br> ), end a line with two or more spaces, and then type return.`  
-We do not support Markdown’s typical double-space to  
-generate a line break due to our built-in auto-  
-linebreaking function. A regular line break will  
-generate a line break on output.  
-花若盛開,蝴蝶自來.\
-人若精彩,天自安排.
 
-半畝方塘一鑒開,\
-天光雲影共徘徊。\
-問渠哪得清如許？\
-為有源頭活水來。
+- end a line with `two or more spaces`
 
-**為有源頭活水來。**
+  We do not support Markdown’s typical double-space to  
+  generate a line break due to our built-in auto-  
+  linebreaking function. A regular line break will  
+  generate a line break on output.  
+
+- create a line break ( `\<br> `)
+
+  花若盛開,蝴蝶自來.\
+  人若精彩,天自安排.
+
+  半畝方塘一鑒開,\
+  天光雲影共徘徊。\
+  問渠哪得清如許？\
+  為有源頭活水來。
+
 
 ---
 
@@ -89,19 +94,29 @@ generate a line break on output.
 
 ---
 
-# 🚀 Escaping Characters: add a `backslash (\)` in front of the character
-   > \* Without the backslash, this would be a bullet in an unordered list.   
+# 🚀 Escaping Characters
 
-#  🚀Escaping Backtick use `double Backticks (``)` 
+- add a `backslash (\)` in front of the character
+
+   \* Without the backslash, this would be a bullet in an unordered list.   
+
+- Escaping Backtick use `double Backticks (``)` 
+
    > **⚠** ``Use `code` in your Markdown file.``
 
 ---
 
 # 🚀<span style="color:blue">Text styling</span>
 
-- Monospaced (固定寬度字形)
+- Monospaced font (using the browser's default monospaced font )
 
-    <samp>The quick brown fox jumps over the lazy dog.</samp>
+<p>When the process is complete, the utility will output the text
+<samp>Scan complete. Found <em>N</em> results.</samp> You can then
+proceed to the next step.</p>
+
+- sup / sub (默認比當前字體稍小)
+
+  x<sub>1</sub>+y<sub>2</sub><sup>3</sup>=15
 
 - Bold/Italic (粗體/斜體)
 
@@ -398,6 +413,71 @@ ___
         - [x]  npm
         - [x]  report
         - [ ]  UI
+
+## Toggle list
+
+  <details>
+
+  <summary> <em>List of groceries</em> </summary>
+
+  * Vegetables
+
+  * orange
+
+  * pineapple
+
+  </details>
+
+
+<details>
+  <summary>Epcot Center</summary>
+
+  - Epcot
+
+    Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.
+
+  - 天助自助
+
+    花若盛開,蝴蝶自來.\
+    人若精彩,天自安排.
+
+  - 朱熹
+
+    半畝方塘一鑒開,
+    天光雲影共徘徊。\
+    問渠哪得清如許？
+    為有源頭活水來。
+
+  - 布袋和尚
+
+    手把青秧插滿田，
+    低頭便見水中天；\
+    六根清凈方為道，
+    退步原來是向前。
+
+  ```js
+  var foo = 'bar';
+
+  function doSomething() {
+    return foo;
+  }
+  ```
+
+</details>
+
+<details>
+  <summary>Click to see the log report</summary>
+
+    Adds three new logging formats to the mod_log_config format specifications, including byte quantities received, sent, and transferred (combination of received and sent quantities). Normally included in the base Apache compile.
+    LogIOTrackTTFB: Enables time tracking between the initial request read time and the moment the first byte response is sent.
+
+    mod_filter: Provides context-sensitive filters to the output chain by registering any number of filter providers. mod_filter is not specific to logging, but allows for extracting specific requests based on the filter provider. Context containers include: main apache config, vhost config, within directory tags, and .htaccess files.
+
+    Employing this module allows for filtering requests containing such things as certain injection criteria and which IP address it’s from.
+
+    This module is provided by default in many of the package distributions, but may require enabling. For the purposes of logging, the FilterTrace directive posts information to the error log. Directives include:
+
+</details>      
         
 ---
 
@@ -417,7 +497,7 @@ ___
 
     *   Designer: [Meo](https://www.meo.cool/)
 
-        > call out
+        call out
 
 *   list item with Image
 
@@ -432,21 +512,21 @@ ___
       return foo;
     }```     
 
----
+  ---
 
-```jsx
-import Router from 'next/router'
+  ```jsx
+  import Router from 'next/router'
 
-function MyComponent() {
-	const [show, setShow] = useState(false)
+  function MyComponent() {
+    const [show, setShow] = useState(false)
 
-	useEffect(() => {
-    console.log(2)
-	}, [])
+    useEffect(() => {
+      console.log(2)
+    }, [])
 
-	return <>...</>
-}
-```
+    return <>...</>
+  }
+  ```
 
 # 🚀Code Span
 
@@ -454,55 +534,59 @@ this is `quoting code` , yes !!! \
 not just `this`, there are still something `overthere`
 
 
-# 🚀Code Block Syntax Highlighting and Diff viewer
+# 🚀Code Block 
 
-```js
-var foo = 'bar';
+- Code blcok Syntax Highlighting 
 
-function doSomething() {
-  return foo;
-}
-```
+  ```js
+  var foo = 'bar';
 
-````diff
-MISH's Live stream
-- lots of people came today
-+ lots more people came today!
-````
+  function doSomething() {
+    return foo;
+  }
+  ```
 
-```diff
-function addTwoNumbers (num1, num2) {
--  return 1 + 2
-+  return num1 + num2
-}
-```
+ - 🚀Diff viewer
+
+    ```diff
+    MISH's Live stream
+    - lots of people came today
+    + lots more people came today!
+    ```
+
+    ```diff
+    function addTwoNumbers (num1, num2) {
+    -  return 1 + 2
+    +  return num1 + num2
+    }
+    ```
 
 
-## astro frontmatter code block
+- astro frontmatter code block
 
-```astro
----
-// Example: Astro component scripts run at build time
-const response = await fetch('http://example.com/movies.json');
-const data = await response.json();
-console.log(data);
----
-<!-- Output the result to the page -->
-<div>{JSON.stringify(data)}</div>
-```
+  ```astro
+  ---
+  // Example: Astro component scripts run at build time
+  const response = await fetch('http://example.com/movies.json');
+  const data = await response.json();
+  console.log(data);
+  ---
+  <!-- Output the result to the page -->
+  <div>{JSON.stringify(data)}</div>
+  ```
 
-## fence code block
-using  `four` backtick to create fendce code block
+- fence code block
+  using  `four` backtick to create fendce code block
 
-````
+  ````
 
-```
- front matter script in astro
-```
-<p> HTML paragraph </p>
-````
+  ```
+  front matter script in astro
+  ```
+  <p> HTML paragraph </p>
+  ````
 
----
+  ---
 
 # 🚀Horizontal Rules
 
@@ -575,22 +659,23 @@ using  `four` backtick to create fendce code block
     - [breed-hobbit-hole][2]
 
 
-    > In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends
-    of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to
-    eat: it was a [hobbit-hole](https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Hobbit lifestyles"), and that means comfort.
-    >In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends
-    of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to
-    eat: it was a [hobbit-hole][1], and that means comfort.
+     In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends
+     of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to
+     eat: it was a [hobbit-hole](https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Hobbit lifestyles"), and that means comfort.
+
+     In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends
+     of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to
+     eat: it was a [hobbit-hole][1], and that means comfort.
 
 
-    [1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Hobbit lifestyles"
-    [2]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Breed Hobbit lifestyles"
+     [1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Hobbit lifestyles"
+     [2]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Breed Hobbit lifestyles"
 
 
-    1. Check out my [Github Profile][github]
-    2. Don't forget to star [Repo][github]
+     1. Check out my [Github Profile][github]
+     2. Don't forget to star [Repo][github]
 
-    [github]: https://github.com/6aravind "Github Profile"
+     [github]: https://github.com/6aravind "Github Profile"
 
 
 ### <span style="color:blue">Image link <span>
@@ -629,16 +714,17 @@ Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
 
 - **Float Right/left Image**
-><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Pineapple" style="float:right;width:100px;height:170px;margin-left:15px;">
->In this example, the image will float to the right in the paragraph, and the text in the paragraph will wrap around the image.
-In this example, the image will float to the right in the paragraph, and the text in the paragraph will wrap around the image.
-<br><br>
 
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio,  vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus  vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+  <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Pineapple" style="float:right;width:100px;height:170px;margin-left:15px;">
+  In this example, the image will float to the right in the paragraph, and the text in the paragraph will wrap around the image.
+  In this example, the image will float to the right in the paragraph, and the text in the paragraph will wrap around the image.
+  <br><br>
+
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio,  vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus  vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
 
 
->But it could take some time to prepare such a cost estimate. In the meantime, Democratic leadership is relying on a White House analysis saying the bill is fully paid for, based in part on the non-partisan Joint Committee on Taxation.
-<figure style="float: left;
+  But it could take some time to prepare such a cost estimate. In the meantime, Democratic leadership is relying on a White House analysis saying the bill is fully paid for, based in part on the non-partisan Joint Committee on Taxation.
+  <figure style="float: left;
   width: 30%;  
   text-align: center;
   font-style: italic;
@@ -725,9 +811,10 @@ In one sign of progress for leadership, after meeting in Pelosi's office, Democr
 
 <span style="color:red;"> SVG Tag can not display </span>
 <br>
-<div>
+<div height="200" >
     <img src="https://media.giphy.com/media/qLHzYjlA2FW8g/giphy.gif" />
-    <img src="https://img.shields.io/badge/theultimatemarkdowncheatsheet-brightgreen.svg" style="float:right"/>
+    <img src="astro-logo.gif"  width="200" />
+    <img src="https://img.shields.io/badge/theultimatemarkdowncheatsheet-brightgreen.svg"  style="float:right"/>
 </div>
 <!-- <svg
   viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"
